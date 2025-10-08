@@ -83,13 +83,13 @@ export default function Home() {
           alt="plant"
           className=" h-[200px] sm:h-[300px] w-auto mt-auto"
         />
-        <div>
+        <div className=" grow">
           <Image
             src={"/imgs/heart-1.png"}
             width={389}
             height={422}
             alt="heart"
-            className="opacity-[3%] w-[200px] md:w-[500px] h-auto mx-auto mt-[150px] md:mt-20"
+            className="opacity-[2%] w-[200px] md:w-[500px] h-auto mx-auto mt-[150px] md:mt-20"
           />
         </div>
       </div>
