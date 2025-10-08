@@ -16,7 +16,7 @@ export default function Home() {
         <div className=" space-y-7 max-w-[700px] 2xl:max-w-[900px] pt-20">
           <h1 className=" text-center text-rose-900 text-balance">
             Wedding Invitation Maker <br />
-            <span className=" text-lg sm:text-2xl">
+            <span className=" text-base sm:text-2xl">
               ( မင်္ဂလာဆောင် ဖိတ်ကြားလွှာ ဖန်တီးမယ် )
             </span>
           </h1>
