@@ -3,6 +3,12 @@ import Image from "next/image";
 import React from "react";
 import { Sparkles, Heart, Share2 } from "lucide-react";
 
+export const metadata = {
+  openGraph: {
+    images: "/imgs/meta-img.png",
+  },
+};
+
 export default function Home() {
   return (
     <div className=" relative w-full min-h-screen  bg-gradient-to-br from-rose-50 via-pink-50 to-rose-100">

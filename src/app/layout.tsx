@@ -36,7 +36,7 @@ export default function RootLayout({
 
         {/* <!-- Open Graph / Facebook --> */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://metatags.io/" />
+        <meta property="og:url" content="https://shwe-latt-twal.vercel.app/" />
         <meta property="og:title" content="Shwe Latt Twal" />
         <meta
           property="og:description"
@@ -46,7 +46,10 @@ export default function RootLayout({
 
         {/* <!-- X (Twitter) --> */}
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://metatags.io/" />
+        <meta
+          property="twitter:url"
+          content="https://shwe-latt-twal.vercel.app/"
+        />
         <meta property="twitter:title" content="Shwe Latt Twal" />
         <meta
           property="twitter:description"
