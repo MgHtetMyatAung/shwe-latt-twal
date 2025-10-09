@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "../ui/button";
+import Link from "next/link";
 
 export default function Header() {
   return (
@@ -14,8 +15,9 @@ export default function Header() {
         <Button
           variant={"outline"}
           className=" uppercase bg-transparent rounded-full"
+          asChild
         >
-          Login
+          <Link href={"/sign-in"}>Login</Link>
         </Button>
       </nav>
     </div>

@@ -117,7 +117,7 @@
 
   --popover-foreground: oklch(0.145 0 0);
 
-  --primary: oklch(0.205 0 0);
+  --primary: oklch(41% 0.159 10.272);
 
   --primary-foreground: oklch(0.985 0 0);
 
@@ -155,13 +155,13 @@
 
   --sidebar-foreground: oklch(0.145 0 0);
 
-  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary: oklch(41% 0.159 10.272);
 
   --sidebar-primary-foreground: oklch(0.985 0 0);
 
   --sidebar-accent: oklch(0.97 0 0);
 
-  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-accent-foreground: oklch(41% 0.159 10.272);
 
   --sidebar-border: oklch(0.922 0 0);
 
@@ -243,4 +243,8 @@
 
 .min-page-h {
   @apply min-h-[calc(100vh-70px)];
+}
+
+.default-bg {
+  @apply bg-gradient-to-br from-rose-50 via-pink-50 to-rose-100;
 }

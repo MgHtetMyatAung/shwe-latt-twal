@@ -1,0 +1,125 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String       @id
+  name          String
+  email         String
+  emailVerified Boolean      @default(false)
+  image         String?
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @default(now()) @updatedAt
+  sessions      Session[]
+  accounts      Account[]
+  invitations   Invitation[]
+
+  @@unique([email])
+  @@map("user")
+}
+
+model Session {
+  id        String   @id
+  expiresAt DateTime
+  token     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([token])
+  @@map("session")
+}
+
+model Account {
+  id                    String    @id
+  accountId             String
+  providerId            String
+  userId                String
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  @@map("account")
+}
+
+model Verification {
+  id         String   @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now()) @updatedAt
+
+  @@map("verification")
+}
+
+model Invitation {
+  id     String @id @default(uuid())
+  userId String // Foreign key linking to the User
+  slug   String @unique // Short, user-friendly slug for public URL (e.g., 'wedding-mg-mg-su')
+
+  eventType EventType
+  title     String
+
+  designData Json
+
+  gregorianDate DateTime // The actual date/time of the event
+
+  isPublished Boolean @default(false)
+
+  isGuestListEnabled Boolean @default(false)
+
+  user   User    @relation(fields: [userId], references: [id])
+  guests Guest[] // Guests invited to this event
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+}
+
+model Guest {
+  id           String @id @default(uuid())
+  invitationId String // Foreign key linking to the Invitation
+
+  name String // e.g., "ဦးကျော်မင်းနှင့် မိသားစု" 
+
+  // The unique, non-guessable token for the share URL (e.g., '7kF8r3H9')
+  shareToken String @unique
+
+  // RSVP Tracking (Accept/Decline)
+  isAttending Boolean? // null: No response, true: Accepted, false: Declined
+
+  // Relationship
+  invitation Invitation @relation(fields: [invitationId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([invitationId])
+}
+
+enum EventType {
+  AHLU_PWE // အလှူပွဲ (Alms Giving / Religious Ceremony)
+  WEDDING_PWE // မင်္ဂလာပွဲ (Wedding)
+  BIRTHDAY_PWE // မွေးနေ့ပွဲ (Birthday)
+  HOUSEWARMING // အိမ်တက်ပွဲ (Housewarming)
+  HONORING_PWE // ဂုဏ်ပြုပွဲ (Honoring Ceremony)
+  AWARD_PWE // ဆုပေးပွဲ (Award Ceremony)
+}
