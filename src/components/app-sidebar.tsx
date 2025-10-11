@@ -27,6 +27,7 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 import { APP_DATA } from "@/constants/app.data";
+import { ROUTES } from "@/constants/routes.data";
 
 // This is sample data.
 const data = {
@@ -61,11 +62,11 @@ const data = {
       items: [
         {
           title: "Lists",
-          url: "#",
+          url: ROUTES.invitation.list,
         },
         {
           title: "Create",
-          url: "#",
+          url: ROUTES.invitation.create,
         },
       ],
     },

@@ -2,6 +2,10 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import React from "react";
 import { Sparkles, Heart, Share2 } from "lucide-react";
+import { RotatingText } from "@/components/ui/shadcn-io/rotating-text";
+import HeroImgCarousel from "@/features/home/hero-img-carousel";
+import Link from "next/link";
+import { ROUTES } from "@/constants/routes.data";
 
 export const metadata = {
   openGraph: {
@@ -9,35 +13,52 @@ export const metadata = {
   },
 };
 
+const services = ["Wedding", "Birthday", "Religious Ceremony"];
+
 export default function Home() {
   return (
-    <div className=" relative w-full min-h-screen  bg-gradient-to-br from-rose-50 via-pink-50 to-rose-100">
-      <div className="relative container z-10 w-full h-screen grid place-items-center">
-        <div className=" space-y-7 max-w-[700px] 2xl:max-w-[900px] pt-20">
-          <h1 className=" text-center text-rose-900 text-balance">
-            Wedding Invitation Maker <br />
-            <span className=" text-base sm:text-2xl">
-              ( မင်္ဂလာဆောင် ဖိတ်ကြားလွှာ ဖန်တီးမယ် )
-            </span>
-          </h1>
-          <p className=" text-center text-lg md:text-xl 2xl:text-2xl text-rose-700 text-pretty">
-            Design stunning, personalized wedding invitations and share them
-            with your loved ones in minutes
-          </p>
-          <div className=" relative max-w-[200px] mx-auto">
-            <Button
-              className=" rounded-full block mx-auto cursor-pointer bg-rose-900 "
-              size={"lg"}
-            >
-              Get Started
-            </Button>
-            <Image
-              src={"/imgs/underline.png"}
-              width={679}
-              height={420}
-              alt="circle"
-              className=" w-full transform -translate-y-5"
-            />
+    <div className=" relative w-full min-h-screen  default-bg py-[90px] lg:pt-[80px]">
+      <div className="relative container z-10 w-full min-page-h flex items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 lg:mx-16">
+          <div className=" space-y-7 max-w-[700px] 2xl:max-w-[900px] h-fit my-auto py-20 lg:py-0">
+            <h4 className=" text-xl text-center lg:text-start xl:text-2xl font-medium text-rose-900 space-y-3">
+              Invitation Maker For{" "}
+              <RotatingText
+                text={services}
+                duration={3000}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                className=" font-semibold text-center lg:text-start text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl text-rose-700"
+                containerClassName=" py-2"
+              />
+              <span className=" font-normal text-center lg:text-start text-lg text-pretty text-rose-700">
+                Design stunning, personalized invitations and share them with
+                your loved ones in minutes
+              </span>
+            </h4>
+            {/* <p className=" text-base sm:text-xl text-center">
+            ( ဖိတ်ကြားလွှာ ဖန်တီးမယ် )
+          </p> */}
+
+            <div className=" relative max-w-[150px] mx-auto lg:mx-0">
+              <Link href={ROUTES.dashboard}>
+                <Button
+                  className=" rounded-full block mx-auto lg:mx-0  cursor-pointer bg-rose-900 "
+                  size={"lg"}
+                >
+                  Get Started
+                </Button>
+              </Link>
+              <Image
+                src={"/imgs/underline.png"}
+                width={679}
+                height={420}
+                alt="circle"
+                className=" w-full"
+              />
+            </div>
+          </div>
+          <div>
+            <HeroImgCarousel />
           </div>
         </div>
       </div>
@@ -87,7 +108,7 @@ export default function Home() {
           width={229}
           height={400}
           alt="plant"
-          className=" h-[200px] sm:h-[300px] w-auto mt-auto"
+          className=" h-[100px] sm:h-[200px] w-auto mt-auto"
         />
         <div className=" grow">
           <Image
@@ -95,7 +116,7 @@ export default function Home() {
             width={389}
             height={422}
             alt="heart"
-            className="opacity-[2%] w-[200px] md:w-[500px] h-auto mx-auto mt-[150px] lg:mt-20"
+            className="opacity-[3%] w-[200px] md:w-[500px] h-auto mx-auto mt-[150px] lg:mt-20"
           />
         </div>
       </div>

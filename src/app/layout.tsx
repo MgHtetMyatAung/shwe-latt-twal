@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { APP_DATA } from "@/constants/app.data";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Shwe Latt Twal",
+  title: APP_DATA.app_title,
   description: "We can't wait to celebrate with you!",
 };
 
@@ -26,8 +27,8 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* <!-- Primary Meta Tags --> */}
-        <title>Shwe Latt Twal</title>
-        <meta name="title" content="Shwe Latt Twal" />
+        <title>{APP_DATA.app_title}</title>
+        <meta name="title" content={APP_DATA.app_title} />
         <meta
           name="description"
           content="We can't wait to celebrate with you!"
@@ -36,7 +37,7 @@ export default function RootLayout({
         {/* <!-- Open Graph / Facebook --> */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://shwe-latt-twal.vercel.app/" />
-        <meta property="og:title" content="Shwe Latt Twal" />
+        <meta property="og:title" content={APP_DATA.app_title} />
         <meta
           property="og:description"
           content="We can't wait to celebrate with you!"
@@ -49,7 +50,7 @@ export default function RootLayout({
           property="twitter:url"
           content="https://shwe-latt-twal.vercel.app/"
         />
-        <meta property="twitter:title" content="Shwe Latt Twal" />
+        <meta property="twitter:title" content={APP_DATA.app_title} />
         <meta
           property="twitter:description"
           content="We can't wait to celebrate with you!"

@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import { APP_DATA } from "@/constants/app.data";
 
 export default function Header() {
   return (
@@ -8,7 +9,7 @@ export default function Header() {
       <nav className=" container flex justify-between items-center h-[80px]">
         <div className="">
           <p className=" text-lg font-semibold text-rose-900 italic">
-            Shwe Latt Twal
+            {APP_DATA.app_title}
           </p>
         </div>
 
