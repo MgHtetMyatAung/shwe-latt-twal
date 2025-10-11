@@ -13,7 +13,7 @@ export default function WeddingTemplateForm() {
   const watchedFields = watch();
 
   useEffect(() => {
-    syncContent(watchedFields as any);
+    syncContent(watchedFields);
   }, [watchedFields, syncContent]);
   return (
     <div>
@@ -39,7 +39,7 @@ export default function WeddingTemplateForm() {
                   className=" text-gray-500 font-normal"
                   htmlFor="groomName"
                 >
-                  Groom's Name
+                  {"Groom's Name"}
                 </Label>
                 <Input
                   id="groomName"
@@ -53,7 +53,7 @@ export default function WeddingTemplateForm() {
                   className=" text-gray-500 font-normal"
                   htmlFor="brideName"
                 >
-                  Bride's Name
+                  {"Bride's Name"}
                 </Label>
                 <Input
                   id="brideName"
