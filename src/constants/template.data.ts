@@ -18,7 +18,6 @@ export const INVITATION_TYPES = [
 
 export const WEDDING_TEMPLATES = [
   { id: "classic", name: "Classic", description: "Timeless elegance" },
-  { id: "modern", name: "Modern", description: "Clean and contemporary" },
   { id: "floral", name: "Floral", description: "Romantic garden theme" },
   { id: "elegant", name: "Elegant", description: "Sophisticated luxury" },
 ] as const;

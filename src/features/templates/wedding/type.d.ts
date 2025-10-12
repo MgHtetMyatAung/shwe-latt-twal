@@ -1,5 +1,5 @@
 interface WeddingInfoType {
-  layoutStyle: "elegance" | "classic" | "floral";
+  layoutStyle: "elegant" | "classic" | "floral";
   primaryColor: string;
   title: string;
   gregorianDate: Date | null;

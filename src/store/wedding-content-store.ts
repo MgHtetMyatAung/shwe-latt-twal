@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 interface WeddingContent {
   // Base Design Fields
-  layoutStyle: "elegance" | "classic" | "floral";
+  layoutStyle: "elegant" | "classic" | "floral";
   primaryColor: string;
 
   // Core Wedding Details
@@ -31,7 +31,7 @@ interface WeddingStore extends WeddingContent {
 }
 
 export const useWeddingContentStore = create<WeddingStore>((set) => ({
-  layoutStyle: "elegance",
+  layoutStyle: "elegant",
   primaryColor: "#B8860B", // Gold/Bronze for elegance
   title: "Our Wedding Day",
   gregorianDate: null,
@@ -49,7 +49,7 @@ export const useWeddingContentStore = create<WeddingStore>((set) => ({
 
   resetWeddingContent: () =>
     set({
-      layoutStyle: "elegance",
+      layoutStyle: "elegant",
       primaryColor: "#B8860B",
       title: "",
       gregorianDate: null,

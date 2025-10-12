@@ -8,17 +8,19 @@ export default function TemplateElegance() {
   const weddingInfo = useWeddingContentStore();
   const dateDetail = getDateDetails(weddingInfo.gregorianDate?.toString());
   return (
-    <div className=" lg:px-10 mx-auto max-w-[460px] min-h-[600px]">
+    <div className=" lg:px-10 mx-auto max-w-[450px] min-h-[500px]">
       <Card className=" rounded-none default-bg relative overflow-hidden">
         <CardContent className="  min-h-[400px] space-y-4 py-5 px-0">
           <p className=" text-center text-sm text-rose-900">
-            {weddingInfo.title}
+            {weddingInfo.title || "-------"}
           </p>
           <div className=" px-14 text-rose-900">
-            <h3 className="text-xl font-semibold">{weddingInfo.groomName}</h3>
+            <h3 className="text-xl font-semibold">
+              {weddingInfo.groomName || "-----"}
+            </h3>
             <p className=" text-center">&</p>
             <h3 className=" text-xl font-semibold text-end">
-              {weddingInfo.brideName}
+              {weddingInfo.brideName || "-----"}
             </h3>
           </div>
           <Image
@@ -30,18 +32,18 @@ export default function TemplateElegance() {
           <p className=" uppercase text-rose-900 font-medium text-center">
             Save the date
           </p>
-          <p className="text-center">{dateDetail.month}</p>
+          <p className="text-center">{dateDetail.month || "---"}</p>
           <div className=" flex justify-center items-center gap-2 text-sm">
-            <p className=" text-center space-x-2">{dateDetail.day} </p>
+            <p className=" text-center space-x-2">{dateDetail.day || "---"} </p>
             <p className=" rounded-full w-7 h-7 text-center bg-gray-50">
-              {dateDetail.count}
+              {dateDetail.count || "---"}
             </p>
             <p className=" text-center space-x-2">
-              {weddingInfo.receptionTime} AM
+              {weddingInfo.receptionTime || "---"}
             </p>
           </div>
           <p className=" text-center text-rose-900 text-xs px-10 font-medium">
-            {weddingInfo.receptionVenue}
+            {weddingInfo.receptionVenue || "-----------"}
           </p>
         </CardContent>
         <Image
