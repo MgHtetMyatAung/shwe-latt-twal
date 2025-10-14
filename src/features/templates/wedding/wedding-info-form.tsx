@@ -4,29 +4,18 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useWeddingContentStore } from "@/store/wedding-content-store";
 import { useFormContext } from "react-hook-form";
-
-type Step1Fields = Pick<
-  WeddingInfoType,
-  | "title"
-  | "groomName"
-  | "brideName"
-  | "groomParents"
-  | "brideParents"
-  | "gregorianDate"
-  | "receptionTime"
-  | "receptionVenue"
->;
+import { Step1FormData, WeddingFormData } from "./validation";
 
 export default function WeddingInfoForm() {
   const syncContent = useWeddingContentStore((state) => state.syncContent);
-  const { register, watch } = useFormContext<Step1Fields>();
+  const { register, watch } = useFormContext<Step1FormData>();
   const watchedFields = watch();
 
   useEffect(() => {
-    syncContent(watchedFields as WeddingInfoType);
+    syncContent(watchedFields as WeddingFormData);
   }, [watchedFields, syncContent]);
   return (
-    <div className=" space-y-2 pt-10">
+    <div className=" space-y-2">
       <h3 className=" text-lg font-medium text-rose-900">Basic Information</h3>
       <p className=" text-rose-700">
         Enter the essential details for your invitation
@@ -36,7 +25,7 @@ export default function WeddingInfoForm() {
           <Label className=" text-gray-500 font-normal" htmlFor="title">
             Invitation Title
           </Label>
-          <Input id="title" {...register("title")} required />
+          <Input id="title" {...register("title")} />
         </div>
 
         <div className="grid md:grid-cols-2 gap-4">
@@ -48,7 +37,6 @@ export default function WeddingInfoForm() {
               id="groomName"
               placeholder="John"
               {...register("groomName")}
-              required
             />
           </div>
           <div className="space-y-2">
@@ -59,7 +47,6 @@ export default function WeddingInfoForm() {
               id="brideName"
               placeholder="Jane"
               {...register("brideName")}
-              required
             />
           </div>
         </div>
@@ -69,23 +56,13 @@ export default function WeddingInfoForm() {
             <Label className=" text-gray-500 font-normal" htmlFor="date">
               Wedding Date
             </Label>
-            <Input
-              id="date"
-              type="date"
-              {...register("gregorianDate")}
-              required
-            />
+            <Input id="date" type="date" {...register("gregorianDate")} />
           </div>
           <div className="space-y-2">
             <Label className=" text-gray-500 font-normal" htmlFor="time">
               Time
             </Label>
-            <Input
-              id="time"
-              type="time"
-              {...register("receptionTime")}
-              required
-            />
+            <Input id="time" type="time" {...register("receptionTime")} />
           </div>
         </div>
 
@@ -96,7 +73,6 @@ export default function WeddingInfoForm() {
           <Textarea
             id="venue"
             placeholder="e.g., Grand Ballroom, 123 Main Street, City"
-            required
             rows={3}
             {...register("receptionVenue")}
           />

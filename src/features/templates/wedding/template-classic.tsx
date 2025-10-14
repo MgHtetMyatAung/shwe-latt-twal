@@ -6,7 +6,7 @@ import { useWeddingContentStore } from "@/store/wedding-content-store";
 import Image from "next/image";
 import React from "react";
 
-export default function TemplateElegance() {
+export default function TemplateClassic() {
   const weddingInfo = useWeddingContentStore();
   const dateDetail = getDateDetails(weddingInfo.gregorianDate?.toString());
   return (
@@ -21,6 +21,10 @@ export default function TemplateElegance() {
           <p className=" text-center text-sm ">
             {weddingInfo.title || "-------"}
           </p>
+          <div className=" text-center">
+            <h2 className=" uppercase text-2xl font-semibold">Wedding</h2>
+            <p>Of</p>
+          </div>
           <div className=" px-14 ">
             <h3 className="text-xl font-semibold">
               {weddingInfo.groomName || "-----"}
@@ -30,43 +34,17 @@ export default function TemplateElegance() {
               {weddingInfo.brideName || "-----"}
             </h3>
           </div>
-          <Image
-            src={"/temps/wedding/ribbon.png"}
-            alt="ribbon"
-            width={731}
-            height={341}
-          />
           <p className=" uppercase  font-medium text-center">Save the date</p>
           <p className="text-center">{dateDetail.month || "---"}</p>
           <div className=" flex justify-center items-center gap-2 text-sm">
-            <p className=" text-center space-x-2">{dateDetail.day || "---"} </p>
-            <p className=" rounded-full w-7 h-7 flex justify-center items-center font-semibold border">
-              {dateDetail.count || "---"}
-            </p>
-            <p className=" text-center space-x-2">
-              {weddingInfo?.receptionTime
-                ? convertToAmPm(weddingInfo.receptionTime)
-                : "---"}
+            <p className=" text-center space-x-2 underline">
+              {dateDetail.day || "---"}, {dateDetail.count} {dateDetail.month}{" "}
             </p>
           </div>
           <p className=" text-center  text-xs px-10 font-medium">
             {weddingInfo.receptionVenue || "-----------"}
           </p>
         </CardContent>
-        <Image
-          src={"/temps/wedding/top_flower_1.png"}
-          alt="flower-top"
-          width={266}
-          height={429}
-          className=" absolute -top-6 right-0 w-16 h-auto rotate-180"
-        />
-        <Image
-          src={"/temps/wedding/top_flower_1.png"}
-          alt="flower-top"
-          width={266}
-          height={429}
-          className=" absolute -bottom-6 left-0 w-16 h-auto"
-        />
       </Card>
     </div>
   );

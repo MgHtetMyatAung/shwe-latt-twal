@@ -3,19 +3,19 @@ import { cn } from "@/lib/utils";
 import { useWeddingContentStore } from "@/store/wedding-content-store";
 import React, { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
-
-type DesignFields = Pick<WeddingInfoType, "layoutStyle" | "primaryColor">;
+import { Step2FormData, WeddingFormData } from "./validation";
 
 export default function WeddingDesignForm() {
   const layoutStyle = useWeddingContentStore((state) => state.layoutStyle);
+  const primaryColor = useWeddingContentStore((state) => state.primaryColor);
   const syncContent = useWeddingContentStore((state) => state.syncContent);
-  const { setValue, watch } = useFormContext<DesignFields>();
+  const { setValue, watch } = useFormContext<Step2FormData>();
   const watchedFields = watch();
-  const handleTemplateSelect = (style: DesignFields["layoutStyle"]) => {
+  const handleTemplateSelect = (style: WeddingFormData["layoutStyle"]) => {
     setValue("layoutStyle", style, { shouldValidate: true, shouldDirty: true });
   };
 
-  const handleColorSelect = (colorValue: DesignFields["primaryColor"]) => {
+  const handleColorSelect = (colorValue: WeddingFormData["primaryColor"]) => {
     setValue("primaryColor", colorValue, {
       shouldValidate: true,
       shouldDirty: true,
@@ -23,10 +23,10 @@ export default function WeddingDesignForm() {
   };
 
   useEffect(() => {
-    syncContent(watchedFields as WeddingInfoType);
+    syncContent(watchedFields as WeddingFormData);
   }, [watchedFields, syncContent]);
   return (
-    <div className=" space-y-3 mt-5">
+    <div className=" space-y-3">
       <div className=" space-y-3">
         <h4 className=" text-rose-900 text-lg font-medium">Choose Template</h4>
         <p>Select a design style for your invitation</p>
@@ -42,7 +42,9 @@ export default function WeddingDesignForm() {
                 }
               )}
               onClick={() =>
-                handleTemplateSelect(template.id as DesignFields["layoutStyle"])
+                handleTemplateSelect(
+                  template.id as WeddingFormData["layoutStyle"]
+                )
               }
             >
               <div className=" text-rose-900 font-medium">{template.name}</div>
@@ -60,9 +62,16 @@ export default function WeddingDesignForm() {
           {COLORS.map((color) => (
             <button key={color.id} type="button">
               <div
-                className="w-12 h-12 mx-auto rounded-full border-2 border-white shadow-md cursor-pointer"
+                className={cn(
+                  "w-12 h-12 mx-auto rounded-full border-4 border-white shadow-md cursor-pointer",
+                  {
+                    "border-rose-900": color.id === primaryColor,
+                  }
+                )}
                 style={{ backgroundColor: color.value }}
-                onClick={() => handleColorSelect(color.value)}
+                onClick={() =>
+                  handleColorSelect(color.id as WeddingFormData["primaryColor"])
+                }
               />
               <span className="text-sm text-rose-900">{color.name}</span>
             </button>

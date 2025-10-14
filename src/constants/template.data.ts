@@ -30,10 +30,12 @@ export const BIRTHDAY_TEMPLATES = [
 ] as const;
 
 export const COLORS = [
-  { id: "rose", name: "Rose", value: "#e11d48" },
-  { id: "gold", name: "Gold", value: "#d97706" },
-  { id: "navy", name: "Navy", value: "#1e40af" },
-  { id: "emerald", name: "Emerald", value: "#059669" },
-  { id: "purple", name: "Purple", value: "#7c3aed" },
-  { id: "blush", name: "Blush", value: "#f472b6" },
+  { id: "pink", name: "Pink", value: "#f472b6", access: "normal" },
+  { id: "emerald", name: "Emerald", value: "#059669", access: "normal" },
+  { id: "rose", name: "Rose", value: "#e11d48", access: "premium" },
+  { id: "orange", name: "orange", value: "#d97706", access: "premium" },
+  { id: "navy", name: "Navy", value: "#1e40af", access: "premium" },
+  { id: "purple", name: "Purple", value: "#7c3aed", access: "premium" },
+  { id: "violet", name: "violet", value: "#9B26B6", access: "premium" },
+  { id: "fuchsia", name: "fuchsia", value: "#FF00FF", access: "premium" },
 ];

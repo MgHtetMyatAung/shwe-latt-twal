@@ -75,7 +75,7 @@ export default function MusicModalBox() {
         <Button
           variant="outline"
           size={"icon"}
-          className="absolute top-0 right-0 z-10" // Adjust positioning as needed
+          className="absolute top-0 right-2 z-10 bg-gray-50" // Adjust positioning as needed
           onClick={handleDialogTrigger} // Use the custom handler
           aria-label={isAudioPlaying ? "Pause music" : "Play music"}
         >

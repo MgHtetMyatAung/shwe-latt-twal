@@ -1,47 +1,28 @@
+import { WeddingFormData } from "@/features/templates/wedding/validation";
 import { create } from "zustand";
 
-interface WeddingContent {
-  // Base Design Fields
-  layoutStyle: "elegant" | "classic" | "floral";
-  primaryColor: string;
-
-  // Core Wedding Details
-  title: string;
-  gregorianDate: Date | null;
-  receptionVenue: string;
-  receptionTime: string; // e.g., "6:00 PM"
-
-  // Names
-  brideName: string; // သတို့သမီး
-  brideParents: string;
-  groomName: string; // သတို့သား
-  groomParents: string;
-
-  // Custom Wording
-  invitationWording: string;
-}
-
-interface WeddingStore extends WeddingContent {
-  setWeddingField: <K extends keyof WeddingContent>(
+interface WeddingStore extends WeddingFormData {
+  setWeddingField: <K extends keyof WeddingFormData>(
     key: K,
-    value: WeddingContent[K]
+    value: WeddingFormData[K]
   ) => void;
   resetWeddingContent: () => void;
-  syncContent: (data: WeddingContent) => void;
+  syncContent: (data: WeddingFormData) => void;
 }
 
 export const useWeddingContentStore = create<WeddingStore>((set) => ({
   layoutStyle: "elegant",
-  primaryColor: "#B8860B", // Gold/Bronze for elegance
+  primaryColor: "pink",
   title: "Our Wedding Day",
-  gregorianDate: null,
+  gregorianDate: "",
   receptionVenue: "ရန်ကုန် ဟိုတယ် (Yangon Hotel)",
-  receptionTime: "07:00 PM",
+  receptionTime: "",
   brideName: "မအိအိဇင်",
   brideParents: "ဦးကျော်မြင့်နှင့် ဒေါ်နီလာမိသားစု",
   groomName: "ကိုကောင်းမြတ်",
   groomParents: "ဦးကျော်မြင့်နှင့် ဒေါ်နီလာမိသားစု",
   invitationWording: "လေးစားစွာဖြင့် ဖိတ်ကြားအပ်ပါသည်",
+  selectedAudioId: "",
 
   setWeddingField: (key, value) => set((state) => ({ ...state, [key]: value })),
 
@@ -50,15 +31,16 @@ export const useWeddingContentStore = create<WeddingStore>((set) => ({
   resetWeddingContent: () =>
     set({
       layoutStyle: "elegant",
-      primaryColor: "#B8860B",
+      primaryColor: "pink",
       title: "",
-      gregorianDate: null,
+      gregorianDate: "",
       receptionVenue: "",
-      receptionTime: "07:00 PM",
+      receptionTime: "",
       brideName: "",
       brideParents: "",
       groomName: "",
       groomParents: "",
       invitationWording: "လေးစားစွာဖြင့် ဖိတ်ကြားအပ်ပါသည်",
+      selectedAudioId: "",
     }),
 }));
