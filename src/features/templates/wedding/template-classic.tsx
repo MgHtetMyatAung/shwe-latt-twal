@@ -3,7 +3,7 @@ import { getColorClasses } from "@/lib/color";
 import { getDateDetails } from "@/lib/date";
 import { convertToAmPm } from "@/lib/time";
 import { useWeddingContentStore } from "@/store/wedding-content-store";
-import Image from "next/image";
+// import Image from "next/image";
 import React from "react";
 
 export default function TemplateClassic() {
@@ -39,6 +39,11 @@ export default function TemplateClassic() {
           <div className=" flex justify-center items-center gap-2 text-sm">
             <p className=" text-center space-x-2 underline">
               {dateDetail.day || "---"}, {dateDetail.count} {dateDetail.month}{" "}
+            </p>
+            <p>
+              {weddingInfo.receptionTime
+                ? convertToAmPm(weddingInfo.receptionTime)
+                : "---"}
             </p>
           </div>
           <p className=" text-center  text-xs px-10 font-medium">

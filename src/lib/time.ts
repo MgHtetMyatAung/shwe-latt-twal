@@ -5,7 +5,7 @@ export const convertToAmPm = (timeString: string) => {
   const [hourString, minuteString] = timeString.split(":");
   let hours = parseInt(hourString, 10);
   const minutes = minuteString;
-  let ampm = hours >= 12 ? "PM" : "AM";
+  const ampm = hours >= 12 ? "PM" : "AM";
 
   // Convert 24-hour to 12-hour format
   hours = hours % 12;
