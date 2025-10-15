@@ -18,7 +18,7 @@ export default function HeroImgCarousel() {
     <div className="w-full sm:p-6 flex lg:justify-end">
       <Carousel
         plugins={[plugin.current]}
-        className="w-full max-w-sm lg:max-w-xs"
+        className="w-full max-w-sm lg:max-w-xs 2xl:max-w-[400px]"
         onMouseEnter={plugin.current.stop}
         onMouseLeave={plugin.current.reset}
       >

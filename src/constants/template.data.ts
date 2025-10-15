@@ -1,3 +1,5 @@
+import { FONTS } from "@/lib/fonts";
+
 export const INVITATION_TYPES = [
   {
     id: 1,
@@ -17,9 +19,35 @@ export const INVITATION_TYPES = [
 ];
 
 export const WEDDING_TEMPLATES = [
-  { id: "classic", name: "Classic", description: "Timeless elegance" },
-  { id: "floral", name: "Floral", description: "Romantic garden theme" },
-  { id: "elegant", name: "Elegant", description: "Sophisticated luxury" },
+  {
+    id: "classic",
+    name: "Classic",
+    description: "Timeless elegance",
+    headerFontId: FONTS.CLASSIC_HEADER.id,
+    bodyFontId: FONTS.CLASSIC_BODY.id,
+    fontOptions: [FONTS.CLASSIC_HEADER, FONTS.GREAT_VIBES],
+  },
+  {
+    id: "floral",
+    name: "Floral",
+    description: "Romantic garden theme",
+    headerFontId: FONTS.FLORAL_HEADER.id,
+    bodyFontId: FONTS.FLORAL_BODY.id,
+    fontOptions: [FONTS.FLORAL_HEADER, FONTS.DANCING_SCRIPT],
+  },
+  {
+    id: "elegant",
+    name: "Elegant",
+    description: "Sophisticated luxury",
+    headerFontId: FONTS.ELEGANCE_HEADER.id, // Default header font for this template
+    bodyFontId: FONTS.ELEGANCE_BODY.id, // Default body font for this template
+    fontOptions: [
+      // Options the user can choose
+      FONTS.ELEGANCE_HEADER,
+      FONTS.GREAT_VIBES, // Adding a mix-and-match option
+      FONTS.DANCING_SCRIPT,
+    ],
+  },
 ] as const;
 
 export const BIRTHDAY_TEMPLATES = [

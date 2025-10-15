@@ -19,18 +19,18 @@ export default function Home() {
   return (
     <div className=" relative w-full min-h-screen  default-bg py-[90px] lg:pt-[80px]">
       <div className="relative container z-10 w-full min-page-h flex items-center">
-        <div className="grid grid-cols-1 lg:grid-cols-2 lg:mx-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 lg:mx-16 2xl:mx-0">
           <div className=" space-y-7 max-w-[700px] 2xl:max-w-[900px] h-fit my-auto py-20 lg:py-0">
-            <h4 className=" text-xl text-center lg:text-start xl:text-2xl font-medium text-rose-900 space-y-3">
+            <h4 className=" text-xl text-center lg:text-start xl:text-2xl 2xl:text-3xl font-medium text-rose-900 space-y-3">
               Invitation Maker For{" "}
               <RotatingText
                 text={services}
                 duration={3000}
                 transition={{ duration: 0.5, ease: "easeInOut" }}
-                className=" font-semibold text-center lg:text-start text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl text-rose-700"
+                className=" font-semibold text-center lg:text-start text-2xl sm:text-3xl lg:text-4xl 2xl:text-6xl text-rose-700"
                 containerClassName=" py-2"
               />
-              <span className=" font-normal text-center lg:text-start text-lg text-pretty text-rose-700">
+              <span className=" font-normal text-center lg:text-start text-lg 2xl:text-xl text-pretty text-rose-700">
                 Design stunning, personalized invitations and share them with
                 your loved ones in minutes
               </span>

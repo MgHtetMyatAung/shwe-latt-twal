@@ -23,6 +23,7 @@ export const useWeddingContentStore = create<WeddingStore>((set) => ({
   groomParents: "ဦးကျော်မြင့်နှင့် ဒေါ်နီလာမိသားစု",
   invitationWording: "လေးစားစွာဖြင့် ဖိတ်ကြားအပ်ပါသည်",
   selectedAudioId: "",
+  headerFontId: "",
 
   setWeddingField: (key, value) => set((state) => ({ ...state, [key]: value })),
 
@@ -42,5 +43,6 @@ export const useWeddingContentStore = create<WeddingStore>((set) => ({
       groomParents: "",
       invitationWording: "လေးစားစွာဖြင့် ဖိတ်ကြားအပ်ပါသည်",
       selectedAudioId: "",
+      headerFontId: "",
     }),
 }));

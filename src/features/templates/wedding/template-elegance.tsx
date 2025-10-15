@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { getColorClasses } from "@/lib/color";
 import { getDateDetails } from "@/lib/date";
+import { FONTS } from "@/lib/fonts";
 import { convertToAmPm } from "@/lib/time";
 import { useWeddingContentStore } from "@/store/wedding-content-store";
 import Image from "next/image";
@@ -9,8 +10,12 @@ import React from "react";
 export default function TemplateElegance() {
   const weddingInfo = useWeddingContentStore();
   const dateDetail = getDateDetails(weddingInfo.gregorianDate?.toString());
+  const headerFont = Object.values(FONTS).find(
+    (f) => f.id === weddingInfo.headerFontId
+  );
+  const headerFontValue = headerFont ? headerFont.value : "sans-serif";
   return (
-    <div className=" lg:px-10 mx-auto max-w-[450px] min-h-[400px]">
+    <div className=" lg:px-10 mx-auto max-w-[700px]">
       <Card
         className={getColorClasses(
           weddingInfo.primaryColor,
@@ -18,15 +23,26 @@ export default function TemplateElegance() {
         )}
       >
         <CardContent className="  min-h-[400px] space-y-4 py-5 px-0">
-          <p className=" text-center text-sm ">
+          <p
+            className=" text-center text-sm "
+            style={{ fontFamily: headerFontValue }}
+          >
             {weddingInfo.title || "-------"}
           </p>
           <div className=" px-14 ">
-            <h3 className="text-xl font-semibold">
+            <h3
+              className="text-xl lg:text-2xl 2xl:text-3xl font-semibold"
+              style={{ fontFamily: headerFontValue }}
+            >
               {weddingInfo.groomName || "-----"}
             </h3>
-            <p className=" text-center">&</p>
-            <h3 className=" text-xl font-semibold text-end">
+            <p className=" text-center" style={{ fontFamily: headerFontValue }}>
+              &
+            </p>
+            <h3
+              className=" text-xl lg:text-2xl 2xl:text-3xl font-semibold text-end"
+              style={{ fontFamily: headerFontValue }}
+            >
               {weddingInfo.brideName || "-----"}
             </h3>
           </div>
@@ -36,7 +52,12 @@ export default function TemplateElegance() {
             width={731}
             height={341}
           />
-          <p className=" uppercase  font-medium text-center">Save the date</p>
+          <p
+            className="  font-medium text-center"
+            style={{ fontFamily: headerFontValue }}
+          >
+            Save The Date
+          </p>
           <p className="text-center">{dateDetail.month || "---"}</p>
           <div className=" flex justify-center items-center gap-2 text-sm">
             <p className=" text-center space-x-2">{dateDetail.day || "---"} </p>

@@ -15,6 +15,8 @@ import {
   WeddingSchema,
 } from "./validation";
 import { useWeddingContentStore } from "@/store/wedding-content-store";
+import { useIsMobile } from "@/hooks/use-mobile";
+import MbTemplatePreview from "./mb-template-preview";
 
 const stepSchemas = [Step1Schema, Step2Schema];
 
@@ -27,6 +29,7 @@ export default function WeddingTemplateForm() {
       ],
     });
   const defaultValues = useWeddingContentStore.getState();
+  const isMobile = useIsMobile();
   const methods = useForm<WeddingFormData>({
     resolver: zodResolver(WeddingSchema),
     defaultValues: {
@@ -69,12 +72,13 @@ export default function WeddingTemplateForm() {
   };
   console.log(errors, "errors");
   return (
-    <div>
-      <div className=" grid grid-cols-1 lg:grid-cols-2 gap-5 my-5">
+    <div className=" py-3">
+      <div className=" grid grid-cols-1 xl:grid-cols-2 gap-5 h-screen">
         <FormProvider {...methods}>
           <form action="" onSubmit={methods.handleSubmit(onSubmit)}>
             {step}
             <div className=" flex justify-end gap-3 my-5">
+              {isMobile && <MbTemplatePreview />}
               {!isFirstStep && (
                 <Button type="button" onClick={back}>
                   Back
@@ -84,7 +88,7 @@ export default function WeddingTemplateForm() {
             </div>
           </form>
         </FormProvider>
-        <div className="bg-gray-200 sm:py-3">
+        <div className="bg-gray-100 py-0 xl:py-10 ">
           <WeddingTemplatePreview />
         </div>
       </div>

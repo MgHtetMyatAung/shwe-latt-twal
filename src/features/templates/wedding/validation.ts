@@ -28,6 +28,8 @@ export const WeddingSchema = z.object({
 
   // Audio (From Zustand)
   selectedAudioId: z.string(),
+
+  headerFontId: z.string(),
 });
 
 // --- 2. Step Schemas (for RHF Validation) ---
@@ -47,6 +49,7 @@ export const Step1Schema = WeddingSchema.pick({
 export const Step2Schema = WeddingSchema.pick({
   layoutStyle: true,
   primaryColor: true,
+  headerFontId: true,
 });
 
 // --- 3. Infer TypeScript Type (Crucial for RHF and Zustand) ---
