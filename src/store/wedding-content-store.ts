@@ -24,6 +24,9 @@ export const useWeddingContentStore = create<WeddingStore>((set) => ({
   invitationWording: "လေးစားစွာဖြင့် ဖိတ်ကြားအပ်ပါသည်",
   selectedAudioId: "",
   headerFontId: "",
+  description: `Please don't forget to come our wedding.`,
+  isGuestListEnabled: true,
+  isPublished: true,
 
   setWeddingField: (key, value) => set((state) => ({ ...state, [key]: value })),
 
@@ -44,5 +47,8 @@ export const useWeddingContentStore = create<WeddingStore>((set) => ({
       invitationWording: "လေးစားစွာဖြင့် ဖိတ်ကြားအပ်ပါသည်",
       selectedAudioId: "",
       headerFontId: "",
+      description: `Please don't forget to come our wedding.`,
+      isGuestListEnabled: true,
+      isPublished: true,
     }),
 }));

@@ -81,6 +81,8 @@ model Invitation {
 
   gregorianDate DateTime // The actual date/time of the event
 
+  description String
+
   isPublished Boolean @default(false)
 
   isGuestListEnabled Boolean @default(false)

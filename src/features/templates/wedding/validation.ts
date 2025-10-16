@@ -30,6 +30,12 @@ export const WeddingSchema = z.object({
   selectedAudioId: z.string(),
 
   headerFontId: z.string(),
+
+  description: z.string(),
+
+  isPublished: z.boolean(),
+
+  isGuestListEnabled: z.boolean(),
 });
 
 // --- 2. Step Schemas (for RHF Validation) ---
@@ -52,7 +58,14 @@ export const Step2Schema = WeddingSchema.pick({
   headerFontId: true,
 });
 
+export const Step3Schema = WeddingSchema.pick({
+  description: true,
+  isGuestListEnabled: true,
+  isPublished: true,
+});
+
 // --- 3. Infer TypeScript Type (Crucial for RHF and Zustand) ---
 export type WeddingFormData = z.infer<typeof WeddingSchema>;
 export type Step1FormData = z.infer<typeof Step1Schema>;
 export type Step2FormData = z.infer<typeof Step2Schema>;
+export type Step3FormData = z.infer<typeof Step3Schema>;

@@ -11,14 +11,16 @@ import { Button } from "@/components/ui/button";
 import {
   Step1Schema,
   Step2Schema,
+  Step3Schema,
   WeddingFormData,
   WeddingSchema,
 } from "./validation";
 import { useWeddingContentStore } from "@/store/wedding-content-store";
-import { useIsMobile } from "@/hooks/use-mobile";
 import MbTemplatePreview from "./mb-template-preview";
+import { toast } from "sonner";
+import WeddingSettingForm from "./wedding-setting-form";
 
-const stepSchemas = [Step1Schema, Step2Schema];
+const stepSchemas = [Step1Schema, Step2Schema, Step3Schema];
 
 export default function WeddingTemplateForm() {
   const { step, next, back, isLastStep, isFirstStep, currentStep } =
@@ -26,10 +28,10 @@ export default function WeddingTemplateForm() {
       steps: [
         <WeddingInfoForm key={"wif"} />,
         <WeddingDesignForm key={"wdf"} />,
+        <WeddingSettingForm key={"wsf"} />,
       ],
     });
   const defaultValues = useWeddingContentStore.getState();
-  const isMobile = useIsMobile();
   const methods = useForm<WeddingFormData>({
     resolver: zodResolver(WeddingSchema),
     defaultValues: {
@@ -62,7 +64,7 @@ export default function WeddingTemplateForm() {
         // Last step: Validation passed for all required fields
         const finalData = methods.getValues();
         console.log("FINAL SUBMISSION DATA:", finalData);
-        alert("Invitation Submitted!");
+        toast.message(JSON.stringify(finalData));
         // Optionally, reset the form/store here
       }
     } else {
@@ -78,7 +80,7 @@ export default function WeddingTemplateForm() {
           <form action="" onSubmit={methods.handleSubmit(onSubmit)}>
             {step}
             <div className=" flex justify-end gap-3 my-5">
-              {isMobile && <MbTemplatePreview />}
+              <MbTemplatePreview />
               {!isFirstStep && (
                 <Button type="button" onClick={back}>
                   Back
@@ -88,7 +90,7 @@ export default function WeddingTemplateForm() {
             </div>
           </form>
         </FormProvider>
-        <div className="bg-gray-100 py-0 xl:py-10 ">
+        <div className="bg-gray-100 py-0 xl:py-10 hidden xl:block">
           <WeddingTemplatePreview />
         </div>
       </div>

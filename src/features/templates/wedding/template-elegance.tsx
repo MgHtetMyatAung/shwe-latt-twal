@@ -15,32 +15,35 @@ export default function TemplateElegance() {
   );
   const headerFontValue = headerFont ? headerFont.value : "sans-serif";
   return (
-    <div className=" lg:px-10 mx-auto max-w-[700px]">
+    <div className=" xl:px-10 mx-auto max-w-[700px]">
       <Card
         className={getColorClasses(
           weddingInfo.primaryColor,
           "rounded-none relative overflow-hidden"
         )}
       >
-        <CardContent className="  min-h-[400px] space-y-4 py-5 px-0">
+        <CardContent className="  min-h-[400px] space-y-4 2xl:space-y-8 py-5 px-0">
           <p
-            className=" text-center text-sm "
+            className=" text-center text-sm 2xl:text-2xl"
             style={{ fontFamily: headerFontValue }}
           >
             {weddingInfo.title || "-------"}
           </p>
-          <div className=" px-14 ">
+          <div className=" px-14 2xl:px-20 ">
             <h3
-              className="text-xl lg:text-2xl 2xl:text-3xl font-semibold"
+              className="text-xl lg:text-2xl 2xl:text-4xl font-semibold"
               style={{ fontFamily: headerFontValue }}
             >
               {weddingInfo.groomName || "-----"}
             </h3>
-            <p className=" text-center" style={{ fontFamily: headerFontValue }}>
+            <p
+              className=" text-center 2xl:text-3xl"
+              style={{ fontFamily: headerFontValue }}
+            >
               &
             </p>
             <h3
-              className=" text-xl lg:text-2xl 2xl:text-3xl font-semibold text-end"
+              className=" text-xl lg:text-2xl 2xl:text-4xl font-semibold text-end"
               style={{ fontFamily: headerFontValue }}
             >
               {weddingInfo.brideName || "-----"}
@@ -53,13 +56,13 @@ export default function TemplateElegance() {
             height={341}
           />
           <p
-            className="  font-medium text-center"
+            className="  font-medium text-center 2xl:text-2xl"
             style={{ fontFamily: headerFontValue }}
           >
             Save The Date
           </p>
           <p className="text-center">{dateDetail.month || "---"}</p>
-          <div className=" flex justify-center items-center gap-2 text-sm">
+          <div className=" flex justify-center items-center gap-2 text-sm 2xl:text-lg">
             <p className=" text-center space-x-2">{dateDetail.day || "---"} </p>
             <p className=" rounded-full w-7 h-7 flex justify-center items-center font-semibold border">
               {dateDetail.count || "---"}
@@ -70,7 +73,7 @@ export default function TemplateElegance() {
                 : "---"}
             </p>
           </div>
-          <p className=" text-center  text-xs px-10 font-medium">
+          <p className=" text-center  text-xs 2xl:text-xl px-10 font-medium">
             {weddingInfo.receptionVenue || "-----------"}
           </p>
         </CardContent>
